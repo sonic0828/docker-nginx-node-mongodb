@@ -1,9 +1,11 @@
 # docker-nginx-node-mongodb
 deploy application demo with docker
+
 Use docker to build `nodejs` `nginx` `mongodb`
 
 ## Quickly started
 MacOS or Windows: download [Docker Desktop](https://www.docker.com/products/docker-desktop).
+
 Linux: use `yum install`:
 
 ## project structure
