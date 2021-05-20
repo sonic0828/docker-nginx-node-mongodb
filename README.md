@@ -48,6 +48,7 @@ docker-nginx-node-mongodb/
 └── README.md
 ```
 
+## Install docker
 **Clear Old Docker**
 ```
 sudo yum remove docker \
@@ -91,30 +92,36 @@ docker -v
 docker-compose -v
 ```
 
+## Stat Project
 
-you will see the version callback
+**Clone the project code to your web directory (eg: /home/wwwroot/)**
 ```bash
 git clone https://github.com/sonic0828/docker-nginx-node-mongodb
 ```
-start app
+**Start app**
 ``` bash
 cd docker-nginx-node-mongodb
 docker-compose up -d
 ```
-when it done, you need configuration `node` connect to `mongodb`, the template at `node/.env.example`, you can copy and rename it to `.env`, the file contains the host/username/password..., then enter the mongo's container, configuration admin account and a lot:
+**Command line input**
 ``` bash
 docker ps
+```
+**And you can see that the following containers have been started**
+``` bash
 CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                                                                      NAMES
 35b613edce77   docker-nginx-node-mongodb_nginx    "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   docker-nginx-node-mongodb_nginx_1
 4b556bf1c394   docker-nginx-node-mongodb_nodejs   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3030->3030/tcp                                                   docker-nginx-node-mongodb_nodejs_1
 357980c55d70   docker-nginx-node-mongodb_mongo    "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   127.0.0.1:27017->27017/tcp                                                 docker-nginx-node-mongodb_mongo_1
 ```
 
-like that you can access the api:
-```
+**like that you can access the api:**
+``` bash
 #local
 http://127.0.0.1:3030
+
 #or service
 http://{your service ip}:3030
 ```
 
+Enjoy~
