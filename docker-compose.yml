@@ -32,7 +32,7 @@ services:               # 定义每个服务的容器
     build:      
       context: ./node   # 构建 node 目录 他会去 node 下面寻找 Dockerfile
     ports:
-      - 0.0.0.0:3030:3030    # 映射 3030
+      - 127.0.0.1:80:3030    # 映射 3030
     volumes:
       - ./node/koa2-demo:/app/koa2-demo    # 项目文件映射
       - node_modules:/app/koa2-demo/node_modules    # 单独处理 node_modules
