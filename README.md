@@ -1,12 +1,52 @@
 # docker-nginx-node-mongodb
 deploy application demo with docker
-
-Use docker to build nodejs/nginx/mongodb
+Use docker to build `nodejs` `nginx` `mongodb`
 
 ## Quickly started
 MacOS or Windows: download [Docker Desktop](https://www.docker.com/products/docker-desktop).
 Linux: use `yum install`:
 
+## project structure
+```
+docker-nginx-node-mongodb/
+├── docker-compose.yml
+├── logs
+│   └── nginx
+│       └── error.log
+├── mongodb
+│   ├── Dockerfile
+│   └── mongo.conf
+├── nginx
+│   ├── cert
+│   ├── conf.d
+│   ├── Dockerfile
+│   └── nginx.conf
+├── node
+│   ├── Dockerfile
+│   └── koa2-demo
+│       ├── app.js
+│       ├── bin
+│       │   └── www
+│       ├── node_modules
+│       ├── package.json
+│       ├── package-lock.json
+│       ├── public
+│       │   ├── async.js
+│       │   └── stylesheets
+│       │       └── style.css
+│       ├── README.md
+│       ├── routes
+│       │   ├── index.js
+│       │   └── users.js
+│       ├── schema
+│       │   └── index.js
+│       └── views
+│           ├── detail.jade
+│           ├── error.jade
+│           ├── index.jade
+│           └── layout.jade
+└── README.md
+```
 
 **Clear Old Docker**
 ```
@@ -66,12 +106,15 @@ when it done, you need configuration `node` connect to `mongodb`, the template a
 docker ps
 CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                                                                      NAMES
 35b613edce77   docker-nginx-node-mongodb_nginx    "/docker-entrypoint.…"   3 minutes ago   Up 3 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp   docker-nginx-node-mongodb_nginx_1
-4b556bf1c394   docker-nginx-node-mongodb_nodejs   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   127.0.0.1:3030->3030/tcp                                                   docker-nginx-node-mongodb_nodejs_1
+4b556bf1c394   docker-nginx-node-mongodb_nodejs   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3030->3030/tcp                                                   docker-nginx-node-mongodb_nodejs_1
 357980c55d70   docker-nginx-node-mongodb_mongo    "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   127.0.0.1:27017->27017/tcp                                                 docker-nginx-node-mongodb_mongo_1
 ```
 
 like that you can access the api:
 ```
+#local
 http://127.0.0.1:3030
+#or service
+http://{your service ip}:3030
 ```
 
